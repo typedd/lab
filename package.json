@@ -1,0 +1,25 @@
+{
+  "name": "lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine",
+    "typecheck": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typedd/lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/typedd/lab/issues"
+  },
+  "homepage": "https://github.com/typedd/lab#readme",
+  "devDependencies": {
+    "flow-bin": "^0.161.0",
+    "jasmine": "^3.9.0"
+  }
+}
