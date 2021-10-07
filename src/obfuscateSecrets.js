@@ -2,11 +2,9 @@
 'use strict';
 
 /* ::
-type X = {
-    secret: string, ...
-} | {
-    [string]: X
-}
+type X = { 
+    secret: string, ... 
+} 
 type Y = {
     secret: '*****', ...
 } | {
