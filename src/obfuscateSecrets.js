@@ -14,6 +14,10 @@ type Y = {
 }
 */
 
+const a /* : X */ = {}; // лезет
+const b /* : X */ = { x: 100 }; // не лезет
+const c /* : X */ = { secret: "asdf" }; // лезет
+
 function obfuscateSecrets(obj /* : X */) /* : Y */ {
     return obj;
 }
