@@ -3,13 +3,13 @@ const { obfuscateSecrets } = require('../../src/obfuscateSecrets');
 describe("obfuscate secrets", function() {
    it("asdf", function() {
        expect(obfuscateSecrets({
-           secret: 'aksfhasfha',
+           secret: 'aksfh',
            x: {
-               secret: '284365892365'
+               secret: '28436'
            }
        })).toEqual({
             secret: '*****',
-            x: {
+            x: { 
                 secret: '*****'
             }
        });
