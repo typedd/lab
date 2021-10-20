@@ -15,13 +15,17 @@ type Y = {
 */
 
 function obfuscateSecrets(obj /* : X */) /* : Y */ {
-    return {
-        secret: '*****',
-        x: { 
-            secret: '*****'
+    let asArray = Object.entries(obj);
+    let newArray = asArray.map(function ([key, value]) {
+        if (key === 'secret') {
+            return [key, value = '*****']
+        } else {
+            return [key, value];
         }
-   }
-};
+    });
+    let obj2 = Object.fromEntries(newArray);
+    return obj2;
+}
 
 module.exports = {
     obfuscateSecrets
