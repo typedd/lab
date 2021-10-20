@@ -15,13 +15,12 @@ type Y = {
 */
 
 function obfuscateSecrets(obj /* : X */) /* : Y */ {
-    for (let key in obj) {
-            if (key === 'secret') {
-                obj[key] = '*****';
-            }
+   return {
+        secret: '*****',
+        x: { 
+            secret: '*****'
         }
-        return obj;
-    };
+}
 
 module.exports = {
     obfuscateSecrets
