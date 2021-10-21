@@ -14,17 +14,42 @@ type Y = {
 }
 */
 
-function obfuscateSecrets(obj /* : X */) /* : Y */ {
-    let asArray = Object.entries(obj);
-    let newArray = asArray.map(function ([key, value]) {
-        if (key === 'secret') {
-            return [key, value = '*****']
-        } else {
-            return [key, value];
+/*
+foo: { secret: '123' } => { secret: '*****' }
+bar: { a: { secret: 'asdf' } } => { a: { secret: '*****' } }
+{ a: { secret: 'asdf' } } => { secret: 'asdf' }
+
+{
+    x: 100,
+    xx: { secret: 'xxx' },
+    xxx: {
+        aaa: { 
+            x: 200,
+            xx: { secret: 'yyy' }
         }
-    });
-    let obj2 = Object.fromEntries(newArray);
-    return obj2;
+    },
+    secret: 'asdlhfas',
+}
+*/
+
+// foo :: { secret: '123' } => { secret: '*****' }
+function foo(obj) {
+    return ({
+        ...obj,
+        secret: '*****',
+    } /* : Y */);
+}
+
+// bar :: { a: { secret: 'asdf' } } => { a: { secret: '*****' } }
+function bar(obj) {
+
+    return {
+        a: foo(obj.a) // obj.a({ secret: 'asdf' }) => { secret: '*****' }
+    }
+}
+
+function obfuscateSecrets(obj /* : X */) /* : Y */ {
+    
 }
 
 module.exports = {
